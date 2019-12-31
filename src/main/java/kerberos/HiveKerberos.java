@@ -10,7 +10,7 @@ import org.apache.hadoop.security.UserGroupInformation;
 
 public class HiveKerberos {
     private static String driverName = "org.apache.hive.jdbc.HiveDriver";// jdbc驱动路径
-    private static String url = "jdbc:hive2://hadoop01.com:10000/asmp;principal=hive/_HOST@CSVW.COM";// hive库地址+库名
+    private static String url = "jdbc:hive2://hadoop102:10000/;principal=hive/hadoop102@HADOOP.COM";// hive库地址+库名
     //	private static String user = "";// 用户名
 //	private static String password = "";// 密码
     private static String sql = "";
@@ -24,7 +24,7 @@ public class HiveKerberos {
             conn = getConn();
             System.out.println(conn);
             stmt = conn.createStatement();
-            String tableName = "test_count_day";// hive表名
+            String tableName = "table3";// hive表名
             sql = "select * from " + tableName;
             System.out.println("Running:" + sql);
             res = stmt.executeQuery(sql);
@@ -65,8 +65,8 @@ public class HiveKerberos {
         UserGroupInformation.setConfiguration(conf);
         try {
             UserGroupInformation.loginUserFromKeytab(
-                    "asmp@CSVW.COM",
-                    "src/main/resources/asmp.keytab");
+                    "atguigu@HADOOP.COM",
+                    "src/main/resources/atguigu.keytab");
         } catch (IOException e) {
             e.printStackTrace();
         }
