@@ -65,8 +65,8 @@ public class HiveKerberos {
         UserGroupInformation.setConfiguration(conf);
         try {
             UserGroupInformation.loginUserFromKeytab(
-                    "atguigu@HADOOP.COM",
-                    "src/main/resources/atguigu.keytab");
+                    "user1@HADOOP.COM",
+                    "src/main/resources/user1.keytab");
         } catch (IOException e) {
             e.printStackTrace();
         }
